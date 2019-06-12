@@ -48,6 +48,8 @@ admins:
  - 你的 Telegram User ID
 ```
 
+与 @[userinfobot](https://t.me/userinfobot) 聊天获取你的 Telegram ID
+
 然后运行：
 
 ```
