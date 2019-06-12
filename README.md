@@ -1,39 +1,84 @@
-Unofficial Docker image for [EH Forwarder Bot](https://github.com/blueset/ehForwarderBot). Maintained by [Roy Xiang](http://github.com/RoyXiang). Included all officialy maintained channels.
+Unofficial Docker image for [EH Forwarder Bot](https://github.com/blueset/ehForwarderBot). 
 
-# Supported tags and respective `Dockerfile` links
+# 从这里开始
 
-* [![](https://images.microbadger.com/badges/version/royx/docker-efb.svg)](https://microbadger.com/images/royx/docker-efb "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/royx/docker-efb.svg)](https://microbadger.com/images/royx/docker-efb "Get your own image badge on microbadger.com") ([Dockerfile](https://github.com/RoyXiang/docker-EFB/blob/master/Dockerfile))
-* [![](https://images.microbadger.com/badges/version/royx/docker-efb:dev.svg)](https://microbadger.com/images/royx/docker-efb:dev "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/royx/docker-efb:dev.svg)](https://microbadger.com/images/royx/docker-efb:dev "Get your own image badge on microbadger.com") ([Dockerfile](https://github.com/RoyXiang/docker-EFB/blob/dev/Dockerfile))
+## 配置文件格式
 
-# Get Started
 
-Make sure you have `config.py` in the current working directory.
-
-If you use Telegram as your master channel and do not have a `tgdata.db` backuped. You need to create one first:
 
 ```
-$ touch tgdata.db
+├── blueset.telegram
+│   ├── config.yaml
+│   └── tgdata.db *
+├── blueset.wechat *
+│   ├── wxpy.pkl *
+│   └── wxpy_puid.pkl *
+├── config.yaml
+└── docker-compose.yml **
+```
+标记 * 号为自动生成的路径和文件，可以不用管它，** 可见最后。
+
+### config.yaml
+
+在当前路径下创建 `config.yaml` 文件
+
+下面是一个拿来可用的 `config.yaml` 示例：
+```
+master_channel: blueset.telegram
+slave_channels:
+- blueset.wechat
+middlewares:
+- catbaron.sticker2img
+- filter.FilterMiddleware
 ```
 
-Then start a docker container by the following command:
+### blueset.telegram/config.yaml
+
+创建 Telegram 主频道配置文件 `config.yaml` 
+
+```
+$ mkdir blueset.telegram
+$ touch blueset.telegram/config.yaml
+```
+下面是需要修改的 `blueset.telegram/config.yaml` 示例文件:
+
+```
+token: "Telegram Bot's token"
+admins:
+ - 你的 Telegram User ID
+```
+
+然后运行：
 
 ```
 $ docker run -d --restart=always \
-        --name=ehforwarderbot \
-        -v $(pwd)/config.py:/opt/ehForwarderBot/config.py \
-        -v $(pwd)/tgdata.db:/opt/ehForwarderBot/plugins/eh_telegram_master/tgdata.db \
-        royx/docker-efb
+        --name efbv2 \
+        -v $(pwd):/root/.ehforwarderbot/profiles/default/ \
+        scavin/docker-efbv2
 ```
 
-If an interactive process is needed for authentication (like WeChat), check it in docker logs:
+最后，使用下面的命令查看微信二维码：
+
 
 ```
-$ docker logs ehforwarderbot
+$ docker logs efbv2
 ```
 
-# Volumes
+## 如何使用过滤
 
-* `/opt/ehForwarderBot/config.py` - the configuration file for [EH Forwarder Bot](https://github.com/blueset/ehForwarderBot)
-* `/opt/ehForwarderBot/plugins/eh_telegram_master/tgdata.db` - the file which holds the link information and message logs
+选择你要屏蔽的对象，直接回复 ```filter` ``` 即可
 
-[Official Documentation](https://ehforwarderbot.readthedocs.io)
+## Docker Compose
+
+docker-compose.yml 示例：
+
+```
+efbv2:
+  image: scavin/docker-efbv2
+  container_name: efbv2
+  restart: always
+  volumes:
+    - ./:/root/.ehforwarderbot/profiles/default/ 
+ ```
+
+[Official Documentation](https://ehforwarderbot.readthedocs.io/en/latest/)
