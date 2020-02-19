@@ -31,6 +31,7 @@ Written for EFB 2.0.0b10; ETM 2.0.0b11; EWS 2.0.0a12
 python3 -i -m ehforwarderbot [-p PROFILE_NAME]
 操作 REPL
 
+```
 >>> from ehforwarderbot import coordinator
 >>> from efb_telegram_master import utils
 >>> # 获取 ETM, EWS 运行实例
@@ -49,3 +50,4 @@ python3 -i -m ehforwarderbot [-p PROFILE_NAME]
 ...                           multiple_slave=True)
 >>> # 退出 EFB 实例并以一般方式重新启动
 >>> ^D
+```
