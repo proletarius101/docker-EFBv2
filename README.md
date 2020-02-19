@@ -81,3 +81,7 @@ efbv2:
  ```
 
 [Official Documentation](https://ehforwarderbot.readthedocs.io/en/latest/)
+
+## 如何批量绑定公众号
+
+https://github.com/scavin/docker-EFBv2/blob/REPL/README.md
