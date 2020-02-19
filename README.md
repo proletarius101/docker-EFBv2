@@ -3,10 +3,7 @@
 REPL 模式同样需要配置 EFB。可以在第一次运行 EFB 的使用，主要用来进入维护模式，比如：绑定公众号到某一个 Group。
 
 ```bash
-$ docker run -d --restart=always \
-        --name efbv2 \
-        -v $(pwd):/root/.ehforwarderbot/profiles/default/ \
-        scavin/docker-efbv2:REPL
+$ docker run -d --name efbv2 $(pwd):/root/.ehforwarderbot/profiles/default/ scavin/docker-efbv2:REPL
 ```
 
 ## 以 REPL 模式启动 EFB
