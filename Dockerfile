@@ -35,4 +35,4 @@ RUN set -ex \
 RUN mkdir -p /root/.ehforwarderbot/modules/
 RUN wget https://gist.githubusercontent.com/blueset/0084ab142e2213bca50d81d08753e564/raw/8699f4b7007b396ff06493eb3ded34402b19d5d0/filter.py -P /root/.ehforwarderbot/modules/
 
-CMD ["python3", "-i", "-m", "ehforwarderbot"]
+CMD ["tail", "-f", "/dev/null"]
