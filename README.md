@@ -1,5 +1,7 @@
 Unofficial Docker image for [EH Forwarder Bot](https://github.com/blueset/ehForwarderBot). 
 
+添加 animated_stickers 支持
+
 # 从这里开始
 
 ## 配置文件格式
@@ -46,6 +48,9 @@ $ touch blueset.telegram/config.yaml
 token: "Telegram Bot's token"
 admins:
  - 你的 Telegram User ID
+flags:
+   animated_stickers: true
+   send_to_last_chat: enabled
 ```
 
 与 @[userinfobot](https://t.me/userinfobot) 聊天获取你的 Telegram ID
