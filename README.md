@@ -1,5 +1,6 @@
 Unofficial Docker image for [EH Forwarder Bot](https://github.com/blueset/ehForwarderBot). 
 
+以下设置可以让EFB 通过 Telegram 收发微信消息。
 # 从这里开始
 
 ## 配置文件格式
