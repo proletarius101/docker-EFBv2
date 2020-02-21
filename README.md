@@ -24,8 +24,12 @@ Written for EFB 2.0.0b10; ETM 2.0.0b11; EWS 2.0.0a12
 
 将 ETM 的 Telegram Bot 添加到目标绑定群组、发送 /info 以获取该群组 ID。群组 ID 应是一个负整数。下面以 -3324225 为例。
 在当前的 profile 中设置 ETM 为主端，并启用 EWS。
-以 REPL 模式启动 EFB
+
+### 以 REPL 模式启动 EFB
+```bash
 python3 -i -m ehforwarderbot [-p PROFILE_NAME]
+```
+
 操作 REPL
 
 ```python
