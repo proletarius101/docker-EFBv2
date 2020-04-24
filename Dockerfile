@@ -22,6 +22,7 @@ RUN set -ex \
                 py3-yaml \
                 py3-cryptography \
                 py3-decorator \
+                py-pip \
                 jpeg-dev \
                 zlib-dev
 
